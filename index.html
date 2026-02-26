@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>c25-rebuild-percellify</title>
+<style>body{background:#0a0a1a;color:#e0e0ff;font-family:monospace;padding:20px;max-width:900px;margin:0 auto}h1{color:#7af}.badge{background:#1a3a1a;border:1px solid #4f4;padding:3px 10px;border-radius:20px;font-size:.8em;color:#4f4}pre{background:#111128;border:1px solid #333;border-radius:8px;padding:20px;overflow-x:auto;margin-top:20px}</style>
+</head><body><span class="badge">✅ CONFIRMED RAN</span><h1>c25-rebuild-percellify</h1><p style="color:#888">Lines: 36 | Deps: none | C25 FacePrintPay</p><pre>#!/data/data/com.termux/files/usr/bin/bash
+# === PATHS ===
+LOG="$HOME/AiKre8tiveGenesis/platform/logs/deploy.log"
+PERCELLIFIED="$HOME/AiKre8tiveGenesis/platform/logs/percellified.html"
+# === FETCH LATEST DEPLOY LOG ===
+echo "🔄 Pulling Vercel logs..."
+LATEST_DEPLOY=$(vercel ls --limit 1 | awk 'NR==2 {print $1}')
+vercel logs "$LATEST_DEPLOY" &gt; "$LOG"
+# === BUILD PERCELLIFIED HTML ===
+mkdir -p "$(dirname "$PERCELLIFIED")"
+{
+  echo "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset='utf-8'&gt;&lt;title&gt;Percellified&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div class='box'&gt;"
+  while IFS= read -r line; do
+    if [[ "$line" == *"Success"* ]]; then
+      echo "&lt;div class='line success'&gt;$line&lt;/div&gt;"
+    elif [[ "$line" == *"Error"* ]]; then
+      echo "&lt;div class='line error'&gt;$line&lt;/div&gt;"
+    else
+      echo "&lt;div class='line info'&gt;$line&lt;/div&gt;"
+    fi</pre></body></html>
