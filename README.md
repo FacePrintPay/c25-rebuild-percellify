@@ -12,6 +12,6 @@ chmod +x rebuild_percellify.sh
 ```
 
 ## Source
-/data/data/com.termux/files/home/platform/rebuild_percellify.sh
+/data/data/com.termux/files/home/sovereign-gtp/src/AiKre8tive-Stargate/platform/rebuild_percellify.sh
 
 Built by Constellation 25 — FacePrintPay / Cygel White
